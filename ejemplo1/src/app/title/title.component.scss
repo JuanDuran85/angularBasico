@@ -1,0 +1,12 @@
+* {
+    background-color: aqua;
+}
+
+:host{
+    display: block;
+}
+
+:host-context(.oscuro) h1{
+    background-color: aquamarine;
+    color: red;
+}
