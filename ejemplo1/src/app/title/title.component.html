@@ -7,5 +7,6 @@
     <ng-content></ng-content>
     <div class="botones">
         <button type="button" name="button" [disabled]="!isAvailable" [class.active]="isAvailable">Ver Más</button>
+        <button type="button" name="button2" [ngClass]="isAvailable ? 'active' : ''">Ver Más</button>
     </div>
 </div>
