@@ -5,4 +5,7 @@
     <p>{{getEdadNombre()}}</p>
     <p>{{edades}}</p>
     <ng-content></ng-content>
+    <div class="botones">
+        <button type="button" name="button" [disabled]="!isAvailable" [class.active]="isAvailable">Ver Más</button>
+    </div>
 </div>

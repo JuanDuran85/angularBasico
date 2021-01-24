@@ -10,3 +10,26 @@
     background-color: aquamarine;
     color: red;
 }
+
+.botones {
+    text-align: center;
+    button {
+        padding: 5px;
+        width: 100px;
+        background-color: aqua;
+        font-weight: 700;
+        font-size: 17px;
+        outline: 0;
+    }
+
+    .active {
+        background-color: coral;
+        color: black;
+        font-size: 20px;
+        font-weight: 900;
+    }
+
+    button:not(.active){
+        opacity: 0.56;
+    }
+}
