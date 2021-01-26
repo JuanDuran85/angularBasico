@@ -16,11 +16,14 @@ export class TitleComponent implements OnInit {
     public edad : number;
     public edades : number[];
     public isAvailable : boolean = false;
+    public masInfo : boolean = false;
+    public cursos : string[];
 
     constructor(){
         this.name = "";
         this.edad = 0;
         this.edades = [];
+        this.cursos = ["Matematica", "Fisica", "Quimica", "Electronica"];
     }
 
     ngOnInit(){
@@ -30,6 +33,7 @@ export class TitleComponent implements OnInit {
 
         setTimeout(() => {
             this.isAvailable = true;
+            this.masInfo = true
         },3500)
     }
 

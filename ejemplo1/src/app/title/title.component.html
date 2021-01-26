@@ -2,13 +2,24 @@
 <div>
     <h1>Titulo del nuevo componente para Angular - {{2020 + 1 }}</h1>
     <p>{{name}}</p>
-    <p>{{getEdadNombre()}}</p>
-    <p>{{edades}}</p>
     <ng-content></ng-content>
+
+    <div class="info">
+        <a>Más información <i class="fa" [ngClass]="masInfo ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i></a>
+        <div *ngIf="masInfo">
+            <p>{{getEdadNombre()}}</p>
+            <p>{{edades}}</p>
+        </div>
+    </div>
     <p *ngIf="!isAvailable; else disponible">Fecha de Inicio: 06 de Febrero de 2021</p>
     <ng-template #disponible>
-        <p class="disponible">Curso Disponible</p>
+        <p class="disponible">Cursos Disponible</p>
     </ng-template>
+    <div>
+        <ul>
+            <li *ngFor="let curso of cursos; index as posicion">{{posicion + 1}} - {{curso}}</li>
+        </ul>
+    </div>
     <div class="botones">
         <button type="button" name="button" [disabled]="!isAvailable" [class.active]="isAvailable">Ver Más</button>
         <button type="button" name="button2" [ngClass]="isAvailable ? 'active' : ''">Ver Más</button>
