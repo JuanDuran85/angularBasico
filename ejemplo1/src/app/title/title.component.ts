@@ -18,26 +18,33 @@ export class TitleComponent implements OnInit {
     public isAvailable : boolean = false;
     public masInfo : boolean = false;
     public cursos : string[];
+    public categoria : string;
 
     constructor(){
         this.name = "";
         this.edad = 0;
         this.edades = [];
         this.cursos = ["Matematica", "Fisica", "Quimica", "Electronica"];
+        this.categoria = "";
     }
 
     ngOnInit(){
         this.name = "Juan";
         this.edad = 35;
         this.edades = [20,45,32,12];
+        this.categoria = "movil";
+        this.masInfo = false;
 
         setTimeout(() => {
             this.isAvailable = true;
-            this.masInfo = true
         },3500)
     }
 
     getEdadNombre() : string {
         return `El nombre es: ${this.name} -:- La edad es: ${this.edad}`
+    }
+
+    toggleMasInfo(){
+        this.masInfo = !this.masInfo;
     }
 }

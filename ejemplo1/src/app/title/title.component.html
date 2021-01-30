@@ -5,7 +5,7 @@
     <ng-content></ng-content>
 
     <div class="info">
-        <a>Más información <i class="fa" [ngClass]="masInfo ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i></a>
+        <a (click)="toggleMasInfo()">Más información <i class="fa" [ngClass]="masInfo ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i></a>
         <div *ngIf="masInfo">
             <p>{{getEdadNombre()}}</p>
             <p>{{edades}}</p>
@@ -15,6 +15,13 @@
     <ng-template #disponible>
         <p class="disponible">Cursos Disponible</p>
     </ng-template>
+
+    <div [ngSwitch]="categoria" class="categoria">
+        <div *ngSwitchCase="'web'">Desarrollo Web</div>
+        <div *ngSwitchCase="'movil'">Desarrollo Movil</div>
+        <div *ngSwitchDefault>No especificado</div>
+    </div>
+
     <div>
         <ul>
             <li *ngFor="let curso of cursos; index as posicion">{{posicion + 1}} - {{curso}}</li>
@@ -22,6 +29,6 @@
     </div>
     <div class="botones">
         <button type="button" name="button" [disabled]="!isAvailable" [class.active]="isAvailable">Ver Más</button>
-        <button type="button" name="button2" [ngClass]="isAvailable ? 'active' : ''">Ver Más</button>
+        <button type="button" name="button2" [ngClass]="isAvailable ? 'active' : 'noClase'">Ver Más</button>
     </div>
 </div>
