@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-card',
@@ -11,6 +11,8 @@ export class UserCardComponent implements OnInit {
   public userName : string;
   public avatar : string;
 
+  @Output() suscrito = new EventEmitter<boolean>();
+
   constructor() { 
     this.name = "";
     this.userName = "";
@@ -21,6 +23,10 @@ export class UserCardComponent implements OnInit {
     this.name = "Juan";
     this.userName = "JuanDuran85";
     this.avatar = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png";
+
+    setTimeout(()=>{
+      this.suscrito.emit(true);
+    },3000)
   }
 
   changingUser(event : any){

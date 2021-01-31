@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ejemplo1';
+  eventoNuevo(evento : any){
+    console.log("evento emitido de hijo a padre...");
+    console.log(evento);
+  }
 }
