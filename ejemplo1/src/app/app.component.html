@@ -2,7 +2,7 @@
 <div class="oscuro">
   <app-user-card (suscrito)="eventoNuevo($event)"></app-user-card>
   <app-full-screen>
-    <app-title>
+    <app-title [subscribed]="eventoSubscribed">
       Información desde el padre
     </app-title>
   </app-full-screen>

@@ -26,6 +26,7 @@ export class UserCardComponent implements OnInit {
 
     setTimeout(()=>{
       this.suscrito.emit(true);
+      this.name = "Duran";
     },3000)
   }
 

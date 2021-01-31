@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <div>
-    <h1>Titulo del nuevo componente para Angular - {{2020 + 1 }}</h1>
+    <h1>Titulo del nuevo componente para Angular - {{fecha}}</h1>
+    <p>otras fechas: {{fecha | json}}</p>
+    <p>otras fechas: {{fecha | date: 'dd MM yy'}}</p>
+    <p>otras fechas: {{fecha | date: 'dd MMM y h:mm:ss' | uppercase}}</p>
     <p>{{name}}</p>
     <ng-content></ng-content>
 
@@ -13,7 +16,7 @@
     </div>
     <p *ngIf="!isAvailable; else disponible">Fecha de Inicio: 06 de Febrero de 2021</p>
     <ng-template #disponible>
-        <p class="disponible">Cursos Disponible</p>
+        <p class="disponible">Cursos Disponible por: {{price | currency:'CLP'}}</p>
     </ng-template>
 
     <div [ngSwitch]="categoria" class="categoria">
@@ -28,7 +31,7 @@
         </ul>
     </div>
     <div class="botones">
-        <button type="button" name="button" [disabled]="!isAvailable" [class.active]="isAvailable">Ver Más</button>
-        <button type="button" name="button2" [ngClass]="isAvailable ? 'active' : 'noClase'">Ver Más</button>
+        <button type="button" name="button" [disabled]="!isAvailable || !subscribed" [class.active]="isAvailable">Ver Más</button>
+        <button type="button" name="button2" [ngClass]="isAvailable && subscribed ? 'active' : 'noClase'">Ver Más</button>
     </div>
 </div>

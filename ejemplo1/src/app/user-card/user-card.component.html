@@ -7,6 +7,6 @@
 
     <div class="intro">
         <p><input type="text" (change)="changingUser($event)" value="{{userName}}"></p>
-        <p><input type="text" (change)="changingName($event)" value="{{name}}"></p>
+        <p><input type="text" [(ngModel)]="name"></p>
     </div>
 </div>
