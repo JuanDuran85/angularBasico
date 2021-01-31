@@ -1,1 +1,12 @@
-<p>user-card works!</p>
+<!DOCTYPE html>
+
+<div class="card">
+    <img [src]="avatar" alt="Avatar">
+    <p class="userName">Nombre de Usuario: {{userName}}</p>
+    <p class="name">Nombre: {{name}}</p>
+
+    <div class="intro">
+        <p><input type="text" (change)="changingUser($event)" value="{{userName}}"></p>
+        <p><input type="text" (change)="changingName($event)" value="{{name}}"></p>
+    </div>
+</div>

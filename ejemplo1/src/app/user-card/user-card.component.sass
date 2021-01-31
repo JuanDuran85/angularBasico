@@ -1,0 +1,25 @@
+:host
+    display: block
+    background-color: rgba(204, 167, 65, 0.726)
+    border-radius: 8px
+    box-shadow: 0px 4px 4px rgba(0,0,0, 0.4)
+    padding: 10px
+    width: 600px
+    height: 400px
+    margin: 20px auto
+
+.card
+    display: grid
+    grid-template-areas: "imagen imagen username" "imagen imagen name" "imagen imagen input"
+    grid-template-columns: 1fr 1fr 1fr
+    grid-template-rows: 80px 80px 80px
+    
+    .userName
+        grid-area: username   
+    .name
+        grid-area: name
+    .intro
+        grid-area: input
+    img
+        grid-area: imagen
+        max-width: 100%
