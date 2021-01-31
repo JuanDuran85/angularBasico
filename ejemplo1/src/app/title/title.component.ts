@@ -21,6 +21,7 @@ export class TitleComponent implements OnInit {
     public categoria : string;
     public fecha : Date;
     public price: number;
+    public seconds : number = 3690;
 
     @Input() subscribed : boolean;
 

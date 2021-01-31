@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <div>
-    <h1>Titulo del nuevo componente para Angular - {{fecha}}</h1>
+    <h1 borderDirect>Titulo del nuevo componente para Angular - {{fecha}}</h1>
     <p>otras fechas: {{fecha | json}}</p>
-    <p>otras fechas: {{fecha | date: 'dd MM yy'}}</p>
+    <p [borderDirect]="'blue'" [backGroundDirect]="'backGroundColor-gold'">otras fechas: {{fecha | date: 'dd MM yy'}}</p>
     <p>otras fechas: {{fecha | date: 'dd MMM y h:mm:ss' | uppercase}}</p>
     <p>{{name}}</p>
     <ng-content></ng-content>
@@ -17,6 +17,7 @@
     <p *ngIf="!isAvailable; else disponible">Fecha de Inicio: 06 de Febrero de 2021</p>
     <ng-template #disponible>
         <p class="disponible">Cursos Disponible por: {{price | currency:'CLP'}}</p>
+        <p>Duracion: {{seconds | secondsToTimeFormat}}</p>
     </ng-template>
 
     <div [ngSwitch]="categoria" class="categoria">
