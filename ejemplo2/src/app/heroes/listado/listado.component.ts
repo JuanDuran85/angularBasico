@@ -8,10 +8,13 @@ import { Component } from '@angular/core';
 export class ListadoComponent  {
   heroes: string[] = ['Spiderman','Ironman','Hulk','Thor'];
   heroeBorrado: string[] = [];
+  heroeBorrado2: string = "";
 
   borrando(valor:number):void{
-    console.log(valor);
     this.heroeBorrado = this.heroes.splice(valor,1);
-    console.log(this.heroeBorrado);
+  }
+
+  borrando2():void{
+    this.heroeBorrado2 = this.heroes.shift() || '';
   }
 }
