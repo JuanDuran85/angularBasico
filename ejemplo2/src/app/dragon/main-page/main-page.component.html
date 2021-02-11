@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <h1>Dragones...</h1>
 <hr>
-
 <div class="row">
     <div class="col">
-        <h3>Personajes</h3>
-        <hr class="linea1">
-        <ul>
-            <li>Dragon 1 - 356</li>
-            <li>Dragon 2 - 687</li>
-            <li>Dragon 3 - 123</li>
-        </ul>
+        <app-personajes [personaje]="personaje"></app-personajes>
     </div>
     <div class="col">
         <h3>Agregar</h3>
         <hr class="linea2">
         <form (ngSubmit)="agregando()">
             <input type="text" placeholder="Nombre del dragon" [(ngModel)]="nuevo.nombre" name="nombre">
-            <input type="number" placeholder="Número del dragon" [(ngModel)]="nuevo.numero" name="numero">
+            <input type="number" [(ngModel)]="nuevo.numero" name="numero">
             <button type="submit">Agregar</button>
         </form>
     </div>

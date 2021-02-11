@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-interface Dragones {
-  nombre: string;
-  numero: number;
-}
+import { Dragones } from '../interfaces/dragones.interface';
 
 @Component({
   selector: 'app-main-page',
@@ -12,13 +8,32 @@ interface Dragones {
 })
 export class MainPageComponent {
 
+  personaje : Dragones[] = [
+    {
+      nombre: "Dragon V",
+      numero: 2045
+    },
+    {
+      nombre: "Dragon II",
+      numero: 35431
+    }
+  ]
+
   nuevo : Dragones = {
-    nombre: 'Dragon VI',
-    numero: 3764
+    nombre: '',
+    numero: 0
   }
 
   agregando(){
-    console.log(this.nuevo);
+    if (this.nuevo.nombre.trim().length === 0) {
+      return;
+    } else {
+      this.personaje.push(this.nuevo);
+      this.nuevo = {
+        nombre: "",
+        numero: 0
+      }
+    }
   }
 
 }
