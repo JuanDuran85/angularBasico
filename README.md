@@ -21,6 +21,11 @@ ng g c nombre_componente --skipTests
 ng g m nombre_modulo
 ```
 
+## Generar Servicio
+```
+ng g s nombre_servicio
+```
+
 ## Llevar a produción
 ```
  ng build --prod
