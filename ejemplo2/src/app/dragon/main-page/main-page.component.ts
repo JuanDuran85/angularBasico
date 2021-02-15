@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Dragones } from '../interfaces/dragones.interface';
+import { DragonService } from '../services/dragon.service';
 
 @Component({
   selector: 'app-main-page',
@@ -28,4 +29,7 @@ export class MainPageComponent {
   agregarNuevoPersonaje(event: Dragones){
     this.personaje.push(event);
   }
+
+  //inyeccion de dependencia. Se inyecta el servicio
+  constructor(public dragonService: DragonService){}
 }
