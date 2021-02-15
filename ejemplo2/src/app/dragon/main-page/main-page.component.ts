@@ -6,6 +6,7 @@ import { Dragones } from '../interfaces/dragones.interface';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
+
 export class MainPageComponent {
 
   personaje : Dragones[] = [
@@ -22,5 +23,9 @@ export class MainPageComponent {
   nuevo : Dragones = {
     nombre: 'Dragon III',
     numero: 0
+  }
+
+  agregarNuevoPersonaje(event: Dragones){
+    this.personaje.push(event);
   }
 }

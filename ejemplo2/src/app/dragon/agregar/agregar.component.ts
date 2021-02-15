@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dragones } from '../interfaces/dragones.interface';
 
 @Component({
@@ -9,18 +9,20 @@ import { Dragones } from '../interfaces/dragones.interface';
 export class AgregarComponent {
 
   @Input() nuevo : Dragones;
-  @Input() personaje: Dragones[] = [];
+  @Output() onNuevoPersonaje: EventEmitter<Dragones> = new EventEmitter();
+
 
   agregando(){
     if (this.nuevo.nombre.trim().length === 0) {
       return;
     } else {
-      this.personaje.push(this.nuevo);
+      console.log(this.nuevo);
+      this.onNuevoPersonaje.emit(this.nuevo);
       this.nuevo = {
-        nombre: "",
+        nombre: "Ingresa un nuevo dragon",
         numero: 0
       }
     }
-    console.log(this.personaje);
+
   }
 }
