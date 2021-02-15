@@ -20,3 +20,8 @@ ng g c nombre_componente --skipTests
 ```
 ng g m nombre_modulo
 ```
+
+## Llevar a produción
+```
+ ng build --prod
+```
