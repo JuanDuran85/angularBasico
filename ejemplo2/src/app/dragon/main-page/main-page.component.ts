@@ -10,26 +10,30 @@ import { DragonService } from '../services/dragon.service';
 
 export class MainPageComponent {
 
-  personaje : Dragones[] = [
-    {
-      nombre: "Dragon V",
-      numero: 2045
-    },
-    {
-      nombre: "Dragon II",
-      numero: 35431
-    }
-  ]
+  // personaje: Dragones[] = [];
 
   nuevo : Dragones = {
     nombre: 'Dragon III',
     numero: 0
   }
 
-  agregarNuevoPersonaje(event: Dragones){
-    this.personaje.push(event);
+  get personaje(): Dragones[] {
+    return this.dragonService.personaje;
   }
 
-  //inyeccion de dependencia. Se inyecta el servicio
-  constructor(public dragonService: DragonService){}
+  // esta es una forma de hacer los getters para los servicios
+ /*  get personaje(): Dragones[] {
+    return this.dragonService.personaje;
+  }  */
+
+/*   agregarNuevoPersonaje(event: Dragones){
+    this.personaje.push(event);
+  } */
+
+  //inyección de dependencia. Se inyecta el servicio
+  constructor(public dragonService: DragonService){
+/* Esta forma es la menos optima de trabajar, ya que lo mejor es hacer 
+    this.personaje = this.dragonService.personaje;
+   */
+  }
 }

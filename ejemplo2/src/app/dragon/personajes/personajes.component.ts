@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Dragones } from '../interfaces/dragones.interface';
+import { DragonService } from '../services/dragon.service';
 
 @Component({
   selector: 'app-personajes',
@@ -8,6 +9,11 @@ import { Dragones } from '../interfaces/dragones.interface';
 })
 export class PersonajesComponent {
 
-  @Input() personaje: Dragones[] = [];
+  get personaje() :Dragones[] {
+    return this.dragonService.personaje;
+  }
 
+  //@Input() personaje: Dragones[] = [];
+
+  constructor(private dragonService: DragonService){}
 }
