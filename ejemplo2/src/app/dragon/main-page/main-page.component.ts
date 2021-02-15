@@ -20,20 +20,7 @@ export class MainPageComponent {
   ]
 
   nuevo : Dragones = {
-    nombre: '',
+    nombre: 'Dragon III',
     numero: 0
   }
-
-  agregando(){
-    if (this.nuevo.nombre.trim().length === 0) {
-      return;
-    } else {
-      this.personaje.push(this.nuevo);
-      this.nuevo = {
-        nombre: "",
-        numero: 0
-      }
-    }
-  }
-
 }

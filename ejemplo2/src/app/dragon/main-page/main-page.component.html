@@ -6,12 +6,6 @@
         <app-personajes [personaje]="personaje"></app-personajes>
     </div>
     <div class="col">
-        <h3>Agregar</h3>
-        <hr class="linea2">
-        <form (ngSubmit)="agregando()">
-            <input type="text" placeholder="Nombre del dragon" [(ngModel)]="nuevo.nombre" name="nombre">
-            <input type="number" [(ngModel)]="nuevo.numero" name="numero">
-            <button type="submit">Agregar</button>
-        </form>
+        <app-agregar [nuevo]="nuevo" [personaje]="personaje"></app-agregar>
     </div>
 </div>
