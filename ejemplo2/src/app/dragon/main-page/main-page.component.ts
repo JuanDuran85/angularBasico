@@ -32,7 +32,7 @@ export class MainPageComponent {
 
   //inyección de dependencia. Se inyecta el servicio
   constructor(public dragonService: DragonService){
-/* Esta forma es la menos optima de trabajar, ya que lo mejor es hacer 
+/* Esta forma es la menos optima de trabajar, ya que lo mejor es hacer get
     this.personaje = this.dragonService.personaje;
    */
   }
