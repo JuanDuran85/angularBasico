@@ -13,4 +13,8 @@ export class SideBarComponent {
   }
 
   constructor(private gifsService : GifsService) { }
+
+  buscando(valor: string){
+    console.log(valor);
+  }
 }
