@@ -1,0 +1,10 @@
+.list-group {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.router-link-active {
+    color: red;
+    background-color: cornsilk;
+}

@@ -21,10 +21,6 @@ const routes : Routes = [
         component: PorCapitalComponent,
     },
     {
-        path: "capital",
-        component: PorCapitalComponent,
-    },
-    {
         path: "pais/:id",
         component: VerPaisComponent,
     },
