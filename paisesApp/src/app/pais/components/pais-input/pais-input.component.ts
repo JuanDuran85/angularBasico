@@ -7,6 +7,7 @@ import { debounceTime } from 'rxjs/operators';
   templateUrl: './pais-input.component.html',
   styleUrls: ['./pais-input.component.scss']
 })
+
 export class PaisInputComponent implements OnInit {
  
   //creamos el evento parar ser escuchado
@@ -27,7 +28,7 @@ export class PaisInputComponent implements OnInit {
     this.debouncer
     .pipe(debounceTime(300))
     .subscribe(valor => {
-      console.log(valor);
+      this.onDebounce.emit(valor);
     })
   }
 
