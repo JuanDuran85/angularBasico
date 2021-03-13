@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Country } from '../../interfaces/pais.interfaces';
 import { PaisService } from '../../services/pais.service';
 
@@ -9,10 +9,10 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorPaisComponent {
 
-  termino: string = "Hola Mundo";
+  termino: string = "";
   hayError : boolean = false;
   paises : Country[] = [];
-
+  
   constructor(private paisService : PaisService) { }
 
   buscar(termino:string){
