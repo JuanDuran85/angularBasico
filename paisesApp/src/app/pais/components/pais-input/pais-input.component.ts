@@ -18,8 +18,8 @@ export class PaisInputComponent implements OnInit {
   @Output() onDebounce: EventEmitter<string> = new EventEmitter();
 
   //sin formulario reactivo se aplica esto
-  //observable manual con Subject
-
+  //observable manual con Subject con Subject de rxjs
+  // la idea es que emita cuando se deje de escribir
   debouncer: Subject<string> = new Subject();
   termino: string = "";
 
@@ -28,7 +28,8 @@ export class PaisInputComponent implements OnInit {
   ngOnInit(): void {
     //suscribiendo 
     this.debouncer
-    .pipe(debounceTime(300))
+    //metodo pipe, conexion que permite trasnformar la salida del subscribe
+    .pipe(debounceTime(300)) // el operador debounceTime se usa para esperar el tiempo x hasta que el observable deje de emitir
     .subscribe(valor => {
       this.onDebounce.emit(valor);
     })
@@ -39,6 +40,7 @@ export class PaisInputComponent implements OnInit {
   }
 
   teclaPresionada(){
+    // el next es para enviar el siguiente valor.
     this.debouncer.next(this.termino);
   }
 
