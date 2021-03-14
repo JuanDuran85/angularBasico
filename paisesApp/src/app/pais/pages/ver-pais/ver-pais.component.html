@@ -12,8 +12,26 @@
           <li class="list-group-item">Población: {{pais.population | number}}</li>
           <li class="list-group-item">Área: {{pais.area | number}}</li>
           <li class="list-group-item">Zona Horaria: {{pais.timezones}}</li>
+          <li class="list-group-item">Código Alfa3: {{pais.alpha3Code}}</li>
+          <li class="list-group-item">
+            <span class="card-text"><small class="text-muted">{{pais.translations.de}}</small></span> |
+            <span class="card-text"><small class="text-muted">{{pais.translations.es}}</small></span> |
+            <span class="card-text"><small class="text-muted">{{pais.translations.fr}}</small></span> |
+            <span class="card-text"><small class="text-muted">{{pais.translations.ja}}</small></span> |
+            <span class="card-text"><small class="text-muted">{{pais.translations.it}}</small></span> |
+            <span class="card-text"><small class="text-muted">{{pais.translations.br}}</small></span> |
+            <span class="card-text"><small class="text-muted">{{pais.translations.pt}}</small></span> |
+            <span class="card-text"><small class="text-muted">{{pais.translations.nl}}</small></span> |
+            <span class="card-text"><small class="text-muted">{{pais.translations.hr}}</small></span> |
+            <span class="card-text"><small class="text-muted">{{pais.translations.fa}}</small></span>
+          </li>
         </ul>
       </div>
   </div>
+
+  <pre class="mt-5">
+    {{pais }}
+  </pre>
+
 </ng-template>
 
