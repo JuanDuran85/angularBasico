@@ -1,1 +1,19 @@
-<p>ver-pais works!</p>
+<div class="alert alert-primary" role="alert" *ngIf="!pais.name; else divPais">
+  Buscando información...
+</div>
+
+<ng-template #divPais>
+  <div class="card m-5">
+      <img [src]="pais.flag" class="card-img-top" [alt]="pais.capital">
+      <div class="card-body">
+        <h5 class="card-title">{{pais.name}}</h5>
+        <p class="card-text">Capital: {{pais.capital}}</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Población: {{pais.population | number}}</li>
+          <li class="list-group-item">Área: {{pais.area | number}}</li>
+          <li class="list-group-item">Zona Horaria: {{pais.timezones}}</li>
+        </ul>
+      </div>
+  </div>
+</ng-template>
+

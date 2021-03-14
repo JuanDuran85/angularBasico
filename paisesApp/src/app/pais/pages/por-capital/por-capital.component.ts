@@ -18,10 +18,11 @@ export class PorCapitalComponent {
   buscar(termino : string) {
     this.hayError = false;
     this.termino = termino;
+
     this.paisService.buscarCapital(termino)
     .subscribe(resp =>{
       this.capital = resp;
-    }, (error) => {
+    }, () => {
       this.hayError = true;
       this.capital = [];
     })
