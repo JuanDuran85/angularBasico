@@ -14,7 +14,7 @@ export class PaisTableComponent implements OnInit {
 
   
   ngOnInit(): void {
-    console.log(this.paises);
+
   }
 
 }
