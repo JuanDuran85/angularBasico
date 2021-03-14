@@ -1,13 +1,14 @@
-<h2>Por País</h2>
-<hr>
+<div class="animate__animated animate__fadeInDownBig">
+    <h2>Por País</h2>
+    <hr>
+    <main class="row">
+        <section class="col">
+            <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" placeholder="Busca un país"></app-pais-input>
+        </section>
+    </main>
+    <hr>
+</div>
 
-<main class="row">
-    <section class="col">
-        <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" placeholder="Busca un país"></app-pais-input>
-    </section>
-</main>
-
-<hr>
 
 <main>
     <div class="alert alert-danger" role="alert" *ngIf="hayError">

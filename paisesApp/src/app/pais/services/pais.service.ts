@@ -14,8 +14,7 @@ export class PaisService {
   constructor(private http: HttpClient) { }
 
   get httpParams () {
-    return new HttpParams().set('fields', 'name;capital;flag;population;area;timezones;alpha3Code;translations;alpha2Code');
-    
+    return new HttpParams().set('fields', 'name;capital;flag;population;alpha2Code');
   }
 
   buscarPais(termino: string) : Observable<Country[]> {
