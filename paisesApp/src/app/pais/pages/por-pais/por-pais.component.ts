@@ -22,7 +22,7 @@ export class PorPaisComponent {
     this.paisService.buscarPais(this.termino)
     .subscribe((resp)=>{
       this.paises = resp;
-    }, (error) => {
+    }, () => {
       this.hayError = true;
       this.paises = [];
     });
