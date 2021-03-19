@@ -17,8 +17,14 @@ ng g c nombre_componente --skipTests
 ```
 
 ## Generar nuevo modulo
+1. Modulo General
 ```
 ng g m nombre_modulo
+```
+
+2. Modulo sin crear carpeta - (--flat) Para evitar que se cree la carpeta
+```
+ng g m nombre_modulo --flat
 ```
 
 ## Generar Servicio
