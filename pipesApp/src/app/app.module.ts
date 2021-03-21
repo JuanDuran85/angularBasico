@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { VentasModule } from './ventas/ventas.module';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -6,6 +7,10 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRouterModule } from './app-router.module';
+
+import localEsCLP from '@angular/common/locales/es-CL';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localEsCLP);
 
 @NgModule({
   declarations: [
@@ -16,8 +21,11 @@ import { AppRouterModule } from './app-router.module';
     BrowserModule,
     SharedModule,
     BrowserAnimationsModule,
+    VentasModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es-CL'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

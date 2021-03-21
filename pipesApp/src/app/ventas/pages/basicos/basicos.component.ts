@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicosComponent implements OnInit {
 
+  public titleUppercase : string = "TITULO UPPERCASE";
+  public titleLowercase : string = "titulo lowecase";
+  public fecha : Date = new Date();
+
   constructor() { }
 
   ngOnInit(): void {

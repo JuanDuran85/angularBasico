@@ -1,1 +1,54 @@
-<p>basicos works!</p>
+<div class="text-color-layout">
+    <h1>Pipes Báicos</h1>
+    <p>Pipes incluidos en Angular - Common Module</p>
+</div>
+
+<div class="p-grid">
+    <div class="p-col-4">
+        <p-card header="Upper Case" [subheader]="titleLowercase">{{titleLowercase | uppercase}}</p-card>
+    </div>
+    <div class="p-col-4">
+        <p-card header="Lower Case" [subheader]="titleUppercase">{{titleUppercase | lowercase}}</p-card>
+    </div>
+    <div class="p-col-4">
+        <p-card header="Title Case" [subheader]="titleUppercase">{{titleUppercase | titlecase}}</p-card>
+    </div>
+</div>
+
+<div class="text-color-layout">
+    <h1>Pipes Dates</h1>
+    <p>Pipes para mostrar fechas en Angular</p>
+</div>
+
+<div class="p-grid">
+    <div class="p-col-6">
+        <p-card>
+            <ul>
+                <li>fecha</li>
+                <li>fecha | date</li>
+                <li>fecha | date: 'short'</li>
+                <li>fecha | date: 'medium'</li>
+                <li>fecha | date: 'long'</li>
+                <li>fecha | date: 'full'</li>
+                <li>fecha | date: 'dd LLLL YYYY'</li>
+                <li>fecha | date: 'MMMM'</li>
+                <li>fecha | date: 'MMMM dd, YYYY'</li>
+            </ul>
+        </p-card>
+    </div> 
+     <div class="p-col-6">
+        <p-card>
+            <ul>
+                <li>{{fecha}}</li>
+                <li>{{fecha | date}}</li>
+                <li>{{fecha | date: 'short'}}</li>
+                <li>{{fecha | date: 'medium'}}</li>
+                <li>{{fecha | date: 'long'}}</li>
+                <li>{{fecha | date: 'full'}}</li>
+                <li>{{fecha | date: 'dd LLLL YYYY'}}</li>
+                <li>{{fecha | date: 'MMMM'}}</li>
+                <li>{{fecha | date: 'MMMM dd, YYYY'}}</li>
+            </ul>
+        </p-card>
+    </div>
+</div>
