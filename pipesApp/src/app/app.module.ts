@@ -9,8 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRouterModule } from './app-router.module';
 
 import localEsCLP from '@angular/common/locales/es-CL';
+import localEsFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localEsCLP);
+registerLocaleData(localEsFr);
 
 @NgModule({
   declarations: [

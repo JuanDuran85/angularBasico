@@ -34,6 +34,12 @@
                 <li>fecha | date: 'MMMM'</li>
                 <li>fecha | date: 'MMMM dd, YYYY'</li>
             </ul>
+            <hr>
+            <ul>
+                <li>fecha | date: 'long': 'GTM-12'</li>
+                <li>fecha | date: 'long': 'GMT+10': 'en'</li>
+                <li>fecha | date: 'full': 'GMT+5': 'fr'</li>
+            </ul>
         </p-card>
     </div> 
      <div class="p-col-6">
@@ -48,6 +54,12 @@
                 <li>{{fecha | date: 'dd LLLL YYYY'}}</li>
                 <li>{{fecha | date: 'MMMM'}}</li>
                 <li>{{fecha | date: 'MMMM dd, YYYY'}}</li>
+            </ul>
+            <hr>
+            <ul>
+                <li>{{fecha | date: 'long': 'GMT-12'}}</li>
+                <li>{{fecha | date: 'long': 'GMT+10': 'en'}}</li>
+                <li>{{fecha | date: 'full': 'GMT+5': 'fr'}}</li>
             </ul>
         </p-card>
     </div>
