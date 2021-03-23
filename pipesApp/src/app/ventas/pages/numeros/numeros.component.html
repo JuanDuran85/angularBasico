@@ -14,9 +14,7 @@
     </div>     
     <div class="p-col-4">
         <p-card header="Constantes" subheader="Valores de Pi y E">
-            <ul>
-                <li>Con "number" -> {{pi | number}}</li>
-                <li>Con "number: '1.2-2'" -> {{pi | number: '1.2-2'}}</li>                
+            <ul>             
                 <li>Con "number" -> {{euler | number}}</li>
                 <li>Con "number: '1.4-5'" -> {{euler | number: '1.4-5'}}</li>
             </ul>
@@ -24,11 +22,29 @@
     </div> 
 
     <div class="p-col-4">
-        <p-card header="Porcentaje" [subheader]="porcentaje">
+        <p-card header="Porcentaje con number" [subheader]="porcentaje">
             <ul>
                 <li>Con "number" -> {{porcentaje | number}}</li>
                 <li>Con "number: '1.2-2'" -> {{porcentaje | number: '1.2-2'}}</li>
             </ul>
         </p-card>
     </div>
+</div>
+<div class="p-grid">
+    <div class="p-col-4">
+        <p-card header="Venta Brutas" [subheader]="ventaNetas">
+            <ul>
+                <li>Con "currency" -> {{(ventaNetas - 1234567890) | currency}}</li>
+                <li>Con "currency:'CLP':'symbol-narrow':'1.3-4'" -> {{(ventaNetas - 1234567890) | currency:'CLP':'symbol-narrow':'1.3-4'}} Pesos</li>
+            </ul>
+        </p-card>
+    </div>      
+    <div class="p-col-4">
+        <p-card header="Porcentaje con pipes percent" [subheader]="porcentaje">
+            <ul>
+                <li>Con "percent" -> {{(porcentaje) | percent}}</li>
+                <li>Con "percent:'2.4-4'" -> {{(porcentaje) | percent : '2.4-4'}}</li>
+            </ul>
+        </p-card>
+    </div>     
 </div>

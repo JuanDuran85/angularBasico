@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as faker from 'faker';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,10 @@ import * as faker from 'faker';
 export class AppComponent {
   public nombre = faker.name.findName();
 
-  mostrarNombre(){
-    console.log(this.nombre);
+  constructor(private primengConfig : PrimeNGConfig){}
+
+  ngOnInit(): void {
+    this.primengConfig.ripple = true;
   }
+
 }
