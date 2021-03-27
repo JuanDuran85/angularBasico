@@ -32,6 +32,11 @@ ng g m nombre_modulo --flat
 ng g s nombre_servicio
 ```
 
+## Generar Pipes
+```
+ng g pipe nombre_pipes
+```
+
 ## Llevar a produción
 ```
  ng build --prod
