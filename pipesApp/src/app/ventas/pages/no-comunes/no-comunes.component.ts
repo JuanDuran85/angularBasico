@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-no-comunes',
@@ -12,6 +13,7 @@ export class NoComunesComponent implements OnInit {
   public invitaMap : Object;
   public clientes : string[];
   public clientesMapa : Object;
+  public personas : Object;
 
   constructor() { }
 
@@ -30,6 +32,12 @@ export class NoComunesComponent implements OnInit {
       '=2' : 'tenemos 2 clientes esperando',
       'other' : 'tenemos # clientes esperando'
     }
+    this.personas = {
+      nombre : 'Lawrence Olson',
+      edad: '48',
+      pais: 'Luxembourg',
+      direccion: '5329 Herman Islands'
+    }
   }
 
   borrando(){
@@ -45,5 +53,13 @@ export class NoComunesComponent implements OnInit {
       this.genero = "masculino";
     }
   }
+
+  miObservable = interval(1000);
+
+  valorPromesa = new Promise((resolve, reject)=>{
+    setTimeout(() => {
+      resolve("Finalizada la promesa")
+    },3500)
+  })
 
 }

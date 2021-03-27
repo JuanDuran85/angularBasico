@@ -20,4 +20,42 @@
             <button pButton type="button" class="p-button-raised p-button-rounded" label="Borrar Cliente" (click)="borrando()"></button>
         </p-fieldset>
     </div>
+    <div class="p-col p-md-6">
+        <p-fieldset legend="Slice Pipe" [toggleable]="true">
+            <h3>Original</h3>
+            <p>{{clientes}}</p>
+            <div>Utizando slice:0:3 -> <b>{{clientes | slice:0:3}}</b></div>
+            <div>Utizando slice:1:2 -> <b>{{clientes | slice:1:2}}</b></div>
+            <div>Utizando slice:3:4 -> <b>{{clientes | slice:3:4}}</b></div>
+            <div>Utizando slice:0:3 para string -> <b>{{nombre | slice:0:3}}</b></div>
+        </p-fieldset>
+    </div>
+    <div class="p-col p-md-6">
+        <p-fieldset legend="keyValue Pipe" [toggleable]="true">
+            <h3>Usando KeyValue Pipes</h3>
+            <p>Una vez implementado se pueden usar: key para la llave del obejto y value para el valor de la llave</p>
+            <ul>
+                <li *ngFor="let item of personas | keyvalue"><b>{{item.key | titlecase}}:</b> {{item.value}}</li>
+            </ul>
+        </p-fieldset>
+    </div>
+    <div class="p-col p-md-6">
+        <p-fieldset legend="JSON Pipe" [toggleable]="true">
+            <h3>Usando JSON Pipes</h3>
+            <pre>{{personas | json}}</pre>
+        </p-fieldset>
+    </div>
+    <div class="p-col p-md-6">
+        <p-fieldset legend="Async Pipe" [toggleable]="true">
+            <h3>Usando Async Pipes</h3>
+            <div>
+                Valores emitidos por el observable: <b>{{miObservable | async}}</b>
+            </div>
+            <div>
+                <p>Valor regresado por la promesa:</p>
+                <p *ngIf="!(valorPromesa | async)">Resolviendo Promesa...</p>
+                <strong>{{valorPromesa | async}}</strong>
+            </div>
+        </p-fieldset>
+    </div>
 </div>
