@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './agregar.component.html',
   styleUrls: ['./agregar.component.scss']
 })
-export class AgregarComponent implements OnInit {
 
-  constructor() { }
+export class AgregarComponent implements OnInit {
+  
+  constructor(private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
+    console.log(this.activatedRoute);
   }
 
 }
