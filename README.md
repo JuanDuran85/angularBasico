@@ -1,7 +1,9 @@
 # angularBasico
+
 Ejemplos de Angular básico. 
 
 ## Generar nuevo proyecto
+
 ```
 ng new nombre_proyecto
 ```

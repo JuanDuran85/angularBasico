@@ -10,7 +10,7 @@ import { FullScreenComponent } from './full-screen/full-screen.component';
 import { UserCardComponent } from './user-card/user-card.component';
 
 import { SecondsToTimeFormat } from "./pipes/SecondsToTimeFormat.pipe";
-import {BorderDirect} from './directives/BorderDirect.directive';
+import { BorderDirect } from './directives/BorderDirect.directive';
 
 @NgModule({
   declarations: [
