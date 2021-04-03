@@ -1,5 +1,5 @@
 <div >
-    <ul>
+    <ul [class.articule-efectos__ul]="resultado?.length > 0" [@showStaggered]="resultado?.length">
         <li *ngFor="let item of resultado"> {{item.name}} - {{item.id}} </li>
     </ul>
 </div>

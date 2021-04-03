@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { showStaggered } from '../animations/staggerd.showUp.animation';
 import { ArticlesService } from '../services/articules.service';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.sass']
+  styleUrls: ['./articles.component.sass'],
+  animations: [showStaggered]
 })
 export class ArticlesComponent implements OnInit {
 

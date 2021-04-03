@@ -7,7 +7,7 @@
     <p>{{name}}</p>
     <ng-content></ng-content>
 
-    <div class="info">
+    <div class="info" [@showUp]="masInfo">
         <a (click)="toggleMasInfo()">Más información <i class="fa" [ngClass]="masInfo ? 'fa-chevron-circle-up' : 'fa-chevron-circle-down'"></i></a>
         <div *ngIf="masInfo">
             <p>{{getEdadNombre()}}</p>

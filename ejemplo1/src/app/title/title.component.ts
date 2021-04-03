@@ -1,5 +1,5 @@
-import { from } from "rxjs";
 import {Component, OnInit, Input} from '@angular/core'; // decorador para componentes, marca una clase como un componente de angular, permite configurar partes importantes del documento
+import { showUp } from '../animations/showUp.animation';
 
 @Component({
   selector: 'app-title',
@@ -8,7 +8,8 @@ import {Component, OnInit, Input} from '@angular/core'; // decorador para compon
   ` */
   templateUrl: 'title.component.html',
   /* styles: ['h1{font-family:Arial}','p{color:blue}'] */
-  styleUrls: ['title.component.scss']
+  styleUrls: ['title.component.scss'],
+  animations: [ showUp ]
 })
 
 export class TitleComponent implements OnInit {
