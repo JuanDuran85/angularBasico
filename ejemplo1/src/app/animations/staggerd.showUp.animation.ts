@@ -2,6 +2,10 @@ import { animate, keyframes, query, stagger, state, style, transition, trigger }
 
 export const showStaggered = trigger('showStaggered', [
     transition('* => *', [
+        query(':enter',style({
+            transform: 'translateX(-100px)',
+            opacity: '0',
+        }),{optional: true}),
         query(':enter',stagger('80ms', [
             animate('0.4s ease-in-out', keyframes([
                 style({
