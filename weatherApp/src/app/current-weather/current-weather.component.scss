@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 .card {
     font-weight: 400;
     background-color: white;
@@ -6,10 +8,28 @@
     border-radius: 16px;
     max-width: 300px;
     box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    text-align: left;
+    text-align: center;
     padding: 2em;
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(3,auto);
-    grid-template-areas: "icon icon temprature temprature" "lowtemp lowtemp hightemp hightemp" "description description description description";
+    grid-template-areas: "icon icon temperature temperature" "lowtemp lowtemp hightemp hightemp" "description description description description";
+
+    &__temp {
+        grid-area: temperature;
+    }
+
+    &__icon {
+        grid-area: icon;
+    }
+
+    &__description {
+        grid-area: description;
+        h3 {
+            color: $accent;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+        }
+    }
 }
