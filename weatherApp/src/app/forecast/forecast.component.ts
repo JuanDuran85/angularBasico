@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { showUpStaggered } from '../animations/showUp.animation';
 import { Forecast } from '../interfaces/forecast.interface';
 import { ForecastService } from '../services/forecast.service';
 
 @Component({
   selector: 'app-forecast',
   templateUrl: './forecast.component.html',
-  styleUrls: ['./forecast.component.scss']
+  styleUrls: ['./forecast.component.scss'],
+  animations: [showUpStaggered]
 })
 export class ForecastComponent implements OnInit {
 
