@@ -12,7 +12,7 @@ export const showUp = trigger('showUpElement',[
                 transform: 'scale(0)'
             }),
             animate(350)
-        ])
+        ], {optional: true})
     ]),
 ]);
 

@@ -13,7 +13,6 @@ export class WeatherCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log();
   }
 
 }

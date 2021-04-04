@@ -10,6 +10,7 @@ import { WeatherCardComponent } from './weather-card/weather-card.component';
 import { TemperaturePipe } from './pipes/temperature.pipe';
 import { ForecastComponent } from './forecast/forecast.component';
 import { LoadingComponent } from './loading/loading.component';
+import { GeoLocButtonComponent } from './geo-loc-button/geo-loc-button.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoadingComponent } from './loading/loading.component';
     WeatherCardComponent,
     TemperaturePipe,
     ForecastComponent,
-    LoadingComponent
+    LoadingComponent,
+    GeoLocButtonComponent
   ],
   imports: [
     BrowserModule,
