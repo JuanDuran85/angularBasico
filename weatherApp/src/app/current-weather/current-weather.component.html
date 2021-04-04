@@ -1,6 +1,11 @@
 <div class="card" *ngIf="weatherLocal">
-    <ul>
-        <li>{{weatherLocal.name}}</li>
-    </ul>
+    <div class="card__temp">
+        <p>Temperatura</p>
+        <p class="card__temp--big">{{weatherLocal.main.temp}}</p>
+    </div>
+    <div class="card__description">
+        <p>{{weatherLocal.name}}</p>
+        <p class="card__temp--big">{{weatherLocal.weather[0].description}}</p>
+    </div>
 </div>
 
