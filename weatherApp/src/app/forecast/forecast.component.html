@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="card" *ngFor="let item of forecastLocal">
+        <div class="card__icon">
+            <app-weather-icon [weatherId]="item.id"></app-weather-icon>
+        </div>
+        <div class="card__temp">
+            <p>Temperatura <br>
+            <span class="card__temp--big">{{item.temp | temperature | number : '2.1-2'}} °F -- {{item.temp}}°C</span></p>
+        </div>
+        <div class="card__lowTemp" *ngIf="item.minMaxTemp">
+            {{item.minMaxTemp.min}}°C <span>min</span>
+        </div>
+        <div class="card__highTemp" *ngIf="item.minMaxTemp">
+            {{item.minMaxTemp.max}}°C <span>max</span>
+        </div>
+        <div class="card__description">
+            <h3>{{item.name}}</h3>
+            <p class="card__temp--big">{{item.description}}</p>
+        </div>
+    </div>
+    
+</div>

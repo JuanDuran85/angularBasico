@@ -1,44 +1,35 @@
 {
-  "coord": {
-    "lon": -122.08,
-    "lat": 37.39
-  },
+  "coord": { "lon": -70.6653, "lat": -33.4513 },
   "weather": [
     {
-      "id": 800,
-      "main": "Clear",
-      "description": "clear sky",
-      "icon": "01d"
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04d"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 282.55,
-    "feels_like": 281.86,
-    "temp_min": 280.37,
-    "temp_max": 284.26,
-    "pressure": 1023,
-    "humidity": 100
+    "temp": 18.65,
+    "feels_like": 18.01,
+    "temp_min": 14,
+    "temp_max": 24.44,
+    "pressure": 1014,
+    "humidity": 55
   },
-  "visibility": 16093,
-  "wind": {
-    "speed": 1.5,
-    "deg": 350
-  },
-  "clouds": {
-    "all": 1
-  },
-  "dt": 1560350645,
+  "visibility": 7000,
+  "wind": { "speed": 2.06, "deg": 0 },
+  "clouds": { "all": 90 },
+  "dt": 1617555753,
   "sys": {
     "type": 1,
-    "id": 5122,
-    "message": 0.0139,
-    "country": "US",
-    "sunrise": 1560343627,
-    "sunset": 1560396563
+    "id": 8506,
+    "country": "CL",
+    "sunrise": 1617533812,
+    "sunset": 1617575632
   },
-  "timezone": -25200,
-  "id": 420006353,
-  "name": "Mountain View",
+  "timezone": -14400,
+  "id": 7648389,
+  "name": "Barrio Brazil",
   "cod": 200
 }

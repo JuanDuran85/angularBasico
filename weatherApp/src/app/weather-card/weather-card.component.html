@@ -1,0 +1,13 @@
+<div class="card" *ngIf="weatherCard">
+    <div class="card__icon">
+        <app-weather-icon [weatherId]="weatherCard.weather[0].id"></app-weather-icon>
+    </div>
+    <div class="card__temp">
+        <p>Temperatura</p>
+        <span class="card__temp--big">{{weatherCard.main.temp | temperature | number : '2.1-2'}} °F -- {{weatherCard.main.temp}}°C</span>
+    </div>
+    <div class="card__description">
+        <h3>{{weatherCard.name}}</h3>
+        <p class="card__temp--big">{{weatherCard.weather[0].description}}</p>
+    </div>
+</div>

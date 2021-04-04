@@ -1,9 +1,10 @@
 export interface Forecast {
-    cod:     string;
-    message: number;
-    cnt:     number;
-    list:    List[];
-    city:    City;
+    cod?:     string;
+    message?: number;
+    cnt?:     number;
+    list?:    List[];
+    city?:    City;
+    minMaxTemp ? : MinMaxInterface;
 }
 
 export interface City {
@@ -82,4 +83,12 @@ export enum MainEnum {
 export interface Wind {
     speed: number;
     deg:   number;
+}
+
+export interface MinMaxInterface {
+    date ? : number;
+    day ? : number;
+    month ? : number;
+    min ? : number;
+    max ? : number;
 }
