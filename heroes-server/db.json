@@ -166,6 +166,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "superhero": "Robin 2",
+      "alter_ego": "Ricardo Tapia",
+      "first_appearance": "Detective Comics #1",
+      "publisher": "DC Comics",
+      "alt_img": "https://pm1.narvii.com/6160/0975e02aed233d7bf21d492b0b38d0544cf28d9c_00.jpg",
+      "characters": "Robin, Robin JR",
+      "id": "Wc9gk0-"
     }
   ]
 }
