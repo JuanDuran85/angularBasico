@@ -3,7 +3,7 @@
         <h1>Buscador de Heroes</h1>
         <mat-divider></mat-divider>
     </div>
-    <div>
+    <div fxLayout="column">
         <h3>Buscador</h3>
         <mat-form-field>
             <input type="text"
@@ -18,11 +18,14 @@
               <mat-option *ngFor="let option of heroes" [value]="option">
                 {{option.superhero}}
               </mat-option>
+              <mat-option value="" *ngIf="noResult">
+                No se encontraron resultados para el término {{termino}}
+              </mat-option>
             </mat-autocomplete>
           </mat-form-field>
     </div>
-    <div>
-        <pre>{{heroeSelected | json}}</pre>
+    <div *ngIf="heroeSelected">
+        <app-heroe-tarjeta [heroe]="heroeSelected"></app-heroe-tarjeta>
     </div>
 </div>
 

@@ -12,21 +12,31 @@ export class BuscarComponent implements OnInit {
 
   public termino : string = "";
   public heroes : Heroe[] = [];
-  public heroeSelected! : Heroe;
+  public heroeSelected : Heroe | undefined;
+  public noResult : boolean = false;
 
   constructor(private heroesService : HeroesService) { }
 
   ngOnInit(): void {
   }
 
-  buscando(){
-    this.heroesService.getSugByHeroe(this.termino).subscribe(heroes => this.heroes = heroes);
+  buscando() : void{
+    this.heroesService.getSugByHeroe(this.termino.trim()).subscribe(heroes => this.heroes = heroes);
+    if (this.heroes.length === 0 && this.termino.trim().length > 0) {
+      this.noResult = true;
+    } else {
+      this.noResult = false;
+    }
   }
 
-  optionSelecting(event : MatAutocompleteSelectedEvent){
-    const heroe : Heroe = event.option.value;
-    this.termino = heroe.superhero;
-    this.heroesService.getHeroeById(heroe.id!).subscribe(heroe => this.heroeSelected = heroe);
+  optionSelecting(event : MatAutocompleteSelectedEvent) :  void {
+    if (event.option.value) {
+      const heroe : Heroe = event.option.value;
+      this.termino = heroe.superhero;
+      this.heroesService.getHeroeById(heroe.id!).subscribe(heroe => this.heroeSelected = heroe);
+    }else {
+      this.heroeSelected = undefined;
+    }
   }
 
 }
