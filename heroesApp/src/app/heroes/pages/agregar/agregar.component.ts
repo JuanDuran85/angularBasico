@@ -51,7 +51,6 @@ export class AgregarComponent implements OnInit {
     } else {
       return;
     }
-
   }
 
   saveHero():void{
@@ -70,17 +69,22 @@ export class AgregarComponent implements OnInit {
   }
 
   deleteHeroe(){
-
     const dialogRef = this.dialog.open(ConfirmarComponent,{
-      width: '250px'
+      width: '350px',
+      data: {...this.heroe}
     });
 
-    /* if (this.heroe.id) {
-      this.heroesService.deleteHero(this.heroe.id!).subscribe(resp => {
-        this.router.navigate(['/heroes']);
-        this.showSnackBar("Registro borrado...")
-      });
-    } */
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        if (this.heroe.id) {
+          this.heroesService.deleteHero(this.heroe.id!).subscribe(resp => {
+            this.router.navigate(['/heroes']);
+            this.showSnackBar("Registro borrado...")
+          });
+        }
+      }
+    });
+
   }
 
   showSnackBar(mensaje : string) : void {
