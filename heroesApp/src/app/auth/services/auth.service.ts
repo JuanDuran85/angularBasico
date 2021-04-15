@@ -20,11 +20,13 @@ export class AuthService {
 
   login() {
     return this.http.get<Auth>(`${this._baseUrl}/usuarios/1`).pipe(
-      tap(resp => this._auth = resp)
+      tap(resp => this._auth = resp),
+      tap(resp => localStorage.setItem('id',resp.id)),
     );
   }
 
   logOut(){
     this._auth = undefined;
+    localStorage.removeItem('id');
   }
 }

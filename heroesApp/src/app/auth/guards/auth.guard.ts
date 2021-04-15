@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.authService.auth.id) {
+      if (this.authService.auth.id || localStorage.getItem('id')) {
         return true
       }
       return false;
@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   constructor(private authService : AuthService){}
 
   canLoad( route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService.auth.id) {
+    if (this.authService.auth.id || localStorage.getItem('id')) {
       return true
     }
     return false;
