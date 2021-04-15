@@ -29,7 +29,8 @@
             <mat-icon>menu</mat-icon>
         </button>
         <span class="spacing__all"></span>
-        <button mat-button>
+        <span>{{user?.usuario}}</span>
+        <button mat-button (click)="logout()">
             LogOut
         </button>
     </mat-toolbar>
