@@ -29,6 +29,11 @@ ng g m nombre_modulo
 ng g m nombre_modulo --flat
 ```
 
+3. Modulo para rutas hijas
+```
+ng g m nombre_modulo --routing
+```
+
 ## Generar Servicio
 ```
 ng g s nombre_servicio
