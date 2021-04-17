@@ -10,6 +10,12 @@ export class BasicosComponent implements OnInit {
 
   @ViewChild('fomularioData') fomularioData! : NgForm;
 
+  public initialFormValue = {
+    producto: '',
+    existencia: 0,
+    precio: 0
+  }
+
   constructor() { }
 
   ngOnInit(): void {
@@ -25,7 +31,10 @@ export class BasicosComponent implements OnInit {
 
   //sendInfo(fomularioData: NgForm) : void{
   sendInfo() : void{
-    console.log(this.fomularioData);
+    this.fomularioData.resetForm({
+      precio: 0,
+      existencia: 0
+    });
   }
 
 }
