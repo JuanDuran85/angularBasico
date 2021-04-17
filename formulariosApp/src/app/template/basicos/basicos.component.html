@@ -3,40 +3,44 @@
 
 <div class="row">
     <div class="col">
-        <form (ngSubmit)="sendInfo(fomularioData)" #fomularioData="ngForm" autocomplete="off">
+        <form (ngSubmit)="sendInfo()" #fomularioData="ngForm" autocomplete="off">
             <div class="mb-3 row">
                 <label for="producto" class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Nombre del producto" ngModel name="producto" required>
-                  <span class="form-text text-danger">Debe ser de 3 letras</span>
+                  <input type="text" class="form-control" placeholder="Nombre del producto" ngModel name="producto" required minlength="3">
+                  <span class="form-text text-danger" *ngIf="validName()">Debe ser de 3 letras</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="precio" class="col-sm-3 col-form-label">Precio</label>
                 <div class="col-sm-9">
-                  <input type="number" class="form-control" placeholder="Precio del producto" ngModel name="precio">
+                  <input type="number" class="form-control" placeholder="Precio del producto" ngModel name="precio" required min="0">
+                  <span class="form-text text-danger" *ngIf="validPrice()">El precio debe ser mayor o igual a 0</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="existencia" class="col-sm-3 col-form-label">Existencia</label>
                 <div class="col-sm-9">
-                  <input type="number" class="form-control" placeholder="Existencias del producto" ngModel name="existencia">
+                  <input type="number" class="form-control" placeholder="Existencias del producto" ngModel name="existencia" required customMin [minimo]="0">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                    <button type="submit" class="btn btn-primary float-end" [disabled]="fomularioData.invalid">Guardar</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-
 <div class="row">
     <div class="col">
         <span>Valid</span>
         <pre>{{fomularioData.valid}}</pre>
+        <span>Pristine</span>
+        <pre>{{fomularioData.pristine}}</pre>
+        <span>Touched</span>
+        <pre>{{fomularioData.touched}}</pre>
         <span>Value</span>
         <pre>{{fomularioData.value | json}}</pre>
     </div>
