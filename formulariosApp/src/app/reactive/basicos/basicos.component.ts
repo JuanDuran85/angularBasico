@@ -15,18 +15,32 @@ export class BasicosComponent implements OnInit {
   }) */
 
   formularioBasico : FormGroup = this.formBuilder.group({
-    nombre: ['', [Validators.required, Validators.minLength(3)]], //valor, validador sincrono, validador asincronos
-    precio: [0, [Validators.required, Validators.min(0)]],
-    existencia: [0,[Validators.required, Validators.min(0)]],
+    nombre: [null, [Validators.required, Validators.minLength(3)]], //valor, validador sincrono, validador asincronos
+    precio: [null, [Validators.required, Validators.min(0)]],
+    existencia: [null,[Validators.required, Validators.min(0)]],
   })
 
   constructor(private formBuilder : FormBuilder) { }
 
   ngOnInit(): void {
+    this.formularioBasico.reset({
+      nombre: "Caja",
+      precio: 1500,
+    })
   }
 
-  validNombre(): boolean{
-    return this.formularioBasico.controls.nombre.errors && this.formularioBasico.controls.nombre.touched;
+  validCampo(campo : string): boolean{
+    return this.formularioBasico.controls[campo].errors && this.formularioBasico.controls[campo].touched;
   }
 
+  saveData() : void {
+    if (this.formularioBasico.valid) {
+      console.log(this.formularioBasico.value);
+      setTimeout(()=>{
+        this.formularioBasico.reset();
+      },1500);
+    } else {
+      this.formularioBasico.markAllAsTouched();
+    }
+  }
 }

@@ -3,30 +3,31 @@
 
 <div class="row">
     <div class="col">
-        <form autocomplete="off" [formGroup]="formularioBasico">
+        <form autocomplete="off" [formGroup]="formularioBasico" (ngSubmit)="saveData()">
             <div class="mb-3 row">
                 <label for="producto" class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" placeholder="Nombre del producto" formControlName="nombre">
-                  <span class="form-text text-danger" *ngIf="validNombre()">Debe ser de 3 letras</span>
+                  <span class="form-text text-danger" *ngIf="validCampo('nombre')">Debe ser de 3 letras</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="precio" class="col-sm-3 col-form-label">Precio</label>
                 <div class="col-sm-9">
                   <input type="number" class="form-control" placeholder="Precio del producto" formControlName="precio">
-                  <span class="form-text text-danger" *ngIf="formularioBasico.controls.precio.errors">El precio debe ser mayor o igual a 0</span>
+                  <span class="form-text text-danger" *ngIf="validCampo('precio')">El precio debe ser mayor o igual a 0</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="existencia" class="col-sm-3 col-form-label">Existencia</label>
                 <div class="col-sm-9">
                   <input type="number" class="form-control" placeholder="Existencias del producto" formControlName="existencia">
+                  <span class="form-text text-danger" *ngIf="validCampo('existencia')">Las existencias deben ser mayor o igual a 0</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary float-end" [disabled]="formularioBasico.invalid">Guardar</button>
+                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
                 </div>
             </div>
         </form>
@@ -43,5 +44,7 @@
         <pre>{{formularioBasico.touched}}</pre>
         <span>Value</span>
         <pre>{{formularioBasico.value | json}}</pre>
+        <span>Precio</span>
+        <pre>{{formularioBasico.controls.precio.errors | json}}</pre>
     </div>
 </div>
