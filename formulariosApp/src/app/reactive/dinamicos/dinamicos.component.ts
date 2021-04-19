@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class DinamicosComponent implements OnInit {
 
   public formularioDinamico : FormGroup = this.formBuilder.group({
-    producto:[null,[Validators.required, Validators.minLength(3)]]
+    producto:[null,[Validators.required, Validators.minLength(3)]],
+    favoritos: this.formBuilder.array([
+      ['Swat 4', Validators.required],
+      ['Fifa', Validators.required]
+    ],Validators.required)
   });
 
+  public newFavorito : FormControl = this.formBuilder.control('',Validators.required);
+
   constructor(private formBuilder : FormBuilder) { }
+
+  get favoritosArray() :  FormArray {
+    return this.formularioDinamico.get('favoritos') as FormArray;
+  }
 
   ngOnInit(): void {
   }
@@ -27,5 +37,12 @@ export class DinamicosComponent implements OnInit {
     } else {
       this.formularioDinamico.markAllAsTouched();
     }
+  }
+
+  addFav(){
+    if (this.newFavorito.invalid) {
+      return;
+    }
+    
   }
 }

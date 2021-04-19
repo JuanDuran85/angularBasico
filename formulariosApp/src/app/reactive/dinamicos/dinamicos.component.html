@@ -15,19 +15,19 @@
         <label for="producto" class="col-sm-3 col-form-label">Agregar</label>
         <div class="col-sm-9">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Agregar Favorito">
-                <button class="btn btn-outline-primary" type="button">Agregar</button>
+                <input type="text" class="form-control" placeholder="Agregar Favorito" [formControl]="newFavorito">
+                <button class="btn btn-outline-primary" type="button" (keyup.enter)="addFav()">Agregar</button>
             </div>
         </div>
     </div>
     <!-- lista de juegos favoritos -->
     <div class="mb-3 row">
         <label for="favoritos" class="col-sm-3 col-form-label">Favoritos</label>
-        <div class="col-sm-9">
-           <!--  <div class="input-group mb-1" *ngFor="let item of persona.favoritos; let i = index">
-                <input type="text" class="form-control">
-                <button type="button" class="btn btn-outline-danger float-end" (click)="deleteGame(i)">Eliminar</button>
-            </div> -->
+        <div class="col-sm-9" formArrayName="favoritos">
+            <div class="input-group mb-1" *ngFor="let item of favoritosArray.controls; let i = index">
+                <input type="text" class="form-control" [formControlName]="i">
+                <button type="button" class="btn btn-outline-danger float-end">Eliminar</button>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -37,8 +37,13 @@
     </div>
 </form>
 
-<!-- <div>
-    <p>Persona</p>
-    <pre>{{persona | json}}</pre>
-</div> -->
+<div>
+    <p>Valid</p>
+    <pre>{{formularioDinamico.valid}}</pre>
+    <p>Value</p>
+    <pre>{{formularioDinamico.value | json}}</pre>
+    <p>Agregar Juego</p>
+    <pre>{{newFavorito.valid}}</pre>
+    <pre>{{newFavorito.value}}</pre>
+</div>
 
