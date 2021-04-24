@@ -39,10 +39,21 @@ export class DinamicosComponent implements OnInit {
     }
   }
 
+  deleteGame(i: number){
+/*     this.formularioDinamico.controls.favoritos.value.splice(i,1);
+    this.favoritosArray.controls.splice(i,1); */
+    this.favoritosArray.removeAt(i);
+  }
+
   addFav(){
     if (this.newFavorito.invalid) {
       return;
     }
     
+  /*   this.favoritosArray.push(new FormControl(this.newFavorito.value, Validators.required)); */
+    //cualquiera de las dos opciones son validas.
+    this.favoritosArray.push(this.formBuilder.control(this.newFavorito.value, Validators.required));
+
+    this.newFavorito.reset();
   }
 }

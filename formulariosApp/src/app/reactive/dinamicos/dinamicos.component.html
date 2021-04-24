@@ -15,8 +15,8 @@
         <label for="producto" class="col-sm-3 col-form-label">Agregar</label>
         <div class="col-sm-9">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Agregar Favorito" [formControl]="newFavorito">
-                <button class="btn btn-outline-primary" type="button" (keyup.enter)="addFav()">Agregar</button>
+                <input type="text" class="form-control" placeholder="Agregar Favorito" [formControl]="newFavorito" (keyup.enter)="addFav()">
+                <button class="btn btn-outline-primary" type="button" (click)="addFav()">Agregar</button>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <div class="col-sm-9" formArrayName="favoritos">
             <div class="input-group mb-1" *ngFor="let item of favoritosArray.controls; let i = index">
                 <input type="text" class="form-control" [formControlName]="i">
-                <button type="button" class="btn btn-outline-danger float-end">Eliminar</button>
+                <button type="button" class="btn btn-outline-danger float-end" (click)="deleteGame(i)">Eliminar</button>
             </div>
         </div>
     </div>
