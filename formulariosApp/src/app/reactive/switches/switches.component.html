@@ -1,7 +1,7 @@
 <h2>Reactivo: Switches</h2>
 <hr>
 
-<form [formGroup]="formularioSwitchesReactivo">
+<form [formGroup]="formularioSwitchesReactivo" (ngSubmit)="seveData()">
     <!-- radio -->
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Género</label>
@@ -48,7 +48,7 @@
     <!-- boton -->
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-primary float-end">Guardar</button>
+            <button type="submit" class="btn btn-primary float-end">Guardar</button>
         </div>
     </div>
 </form>
