@@ -3,12 +3,12 @@
 
 <div class="row">
     <div class="col">
-        <form autocomplete="off">
+        <form autocomplete="off" [formGroup]="miFormulario">
             <div class="row mb-3">
               <label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Nombre del Usuario">
-                <span class="form-text text-danger">Debe ser en formato de Nombre y Apellido</span>
+                <input type="text" class="form-control" placeholder="Nombre del Usuario" formControlName="nombre">
+                <span class="form-text text-danger" *ngIf="campoNoValido('nombre')">Debe ser en formato de Nombre y Apellido</span>
               </div>
             </div>
             <div class="row mb-3">
@@ -42,4 +42,12 @@
             </div>
           </form>
     </div>
+</div>
+
+<div class="mt-3">
+    <h2>Form Valid:</h2><span>{{miFormulario.valid}}</span>
+</div>
+<div class="mt-3">
+    <h2>Nombre errors:</h2>
+    <pre>{{miFormulario.controls.nombre.errors | json}}</pre>
 </div>
