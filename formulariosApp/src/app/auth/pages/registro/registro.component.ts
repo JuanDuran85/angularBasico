@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { emailRegular, expreRegular, validadorExterno } from 'src/app/shared/validator/validaciones';
+/* import { emailRegular, expreRegular, validadorExterno } from 'src/app/shared/validator/validaciones'; */
+import { ValidatorService } from 'src/app/shared/validator/validator.service';
 
 @Component({
   selector: 'app-registro',
@@ -11,12 +12,16 @@ import { emailRegular, expreRegular, validadorExterno } from 'src/app/shared/val
 export class RegistroComponent implements OnInit {
 
   public miFormulario : FormGroup = this.formBuilder.group({
-    nombre: ['', [Validators.required, Validators.pattern(expreRegular)]],
-    email: ['',[Validators.required, Validators.email, Validators.pattern(emailRegular)]],
-    username: ['', [Validators.required, validadorExterno ]]
+    nombre: ['', [Validators.required, Validators.pattern(this.vs.expreRegular)]],
+    email: ['',[Validators.required, Validators.email, Validators.pattern(this.vs.emailRegular)]],
+    username: ['', [Validators.required, this.vs.validadorExterno ]],
+    password: ['',[Validators.required, Validators.minLength(6)]],
+    password2: ['',[Validators.required]],
+  },{
+    validators: [this.vs.sonIguales('password', 'password2')]
   })
 
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(private formBuilder : FormBuilder, private vs: ValidatorService) { }
 
   ngOnInit(): void {
     this.miFormulario.reset({

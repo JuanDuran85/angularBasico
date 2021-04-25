@@ -1,3 +1,5 @@
+/* Esto es para validaciones sencillas que no requieran servicios ni mayor complejidad */
+
 import { FormControl } from "@angular/forms";
 
 export const expreRegular : string = '([a-zA-Z]+) ([a-zA-Z]+)';
