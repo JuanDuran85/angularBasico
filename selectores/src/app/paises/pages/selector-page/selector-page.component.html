@@ -1,1 +1,43 @@
-<p>selector-page works!</p>
+<h1 class="mt-5">Selectores anidados</h1>
+<hr>
+
+<form [formGroup]="miFormulario" (ngSubmit)="sevaData()">
+    <div class="row">
+        <div class="col">
+            <label for="" class="form-label">Continentes</label>
+            <select class="form-control" formControlName="region">
+                <option value=""> -- Seleccione continente --</option>
+                <option *ngFor="let region of regiones" [value]="region | lowercase"> {{region}} </option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="" class="form-label">Paise</label>
+            <select class="form-control" formControlName="pais">
+                <option value=""> -- Seleccione un país --</option>
+                <option *ngFor="let pregiones of paisesRegion" [value]="pregiones.alpha3Code"> {{pregiones.name}} </option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="" class="form-label">Fronteras</label>
+            <select class="form-control" formControlName="frontera">
+                <option value=""> -- Seleccione la frontera --</option>
+               <!--  <option *ngFor="let pregiones of paisesRegion" [value]="pregiones.alpha3Code"> {{pregiones.name}} </option> -->
+            </select>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <button type="submit" class="btn btn-primary float-end">Seleccionar</button>
+        </div>
+    </div>
+</form>
+
+<div class="mt-2">
+    <h3>Mi formulario</h3>
+    <pre>Valid: {{miFormulario.valid}}</pre>
+    <pre>Valores: {{miFormulario.value | json}}</pre>
+</div>
