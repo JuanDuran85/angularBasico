@@ -2,7 +2,7 @@
 <hr>
 
 <form [formGroup]="miFormulario" (ngSubmit)="sevaData()">
-    <div class="row">
+    <div class="row mt-3">
         <div class="col">
             <label for="" class="form-label">Continentes</label>
             <select class="form-control" formControlName="region">
@@ -11,7 +11,7 @@
             </select>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-3" *ngIf="paisesRegion.length !== 0">
         <div class="col">
             <label for="" class="form-label">Paise</label>
             <select class="form-control" formControlName="pais">
@@ -20,13 +20,20 @@
             </select>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-3" *ngIf="fronteraContry.length > 0">
         <div class="col">
             <label for="" class="form-label">Fronteras</label>
             <select class="form-control" formControlName="frontera">
                 <option value=""> -- Seleccione la frontera --</option>
-               <!--  <option *ngFor="let pregiones of paisesRegion" [value]="pregiones.alpha3Code"> {{pregiones.name}} </option> -->
+                <option *ngFor="let frontera of fronteraContry" [value]="frontera"> {{frontera}} </option>
             </select>
+        </div>
+    </div>
+    <div class="row mt-3" *ngIf="cargando">
+        <div class="col">
+            <div class="alert alert-primary" role="alert">
+                <strong>Cargando...</strong>
+            </div>
         </div>
     </div>
     <div class="row mt-3">

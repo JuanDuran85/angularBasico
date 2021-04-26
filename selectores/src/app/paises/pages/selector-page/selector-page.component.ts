@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { switchMap, tap } from "rxjs/operators";
-import { PaisSmall } from '../../interfaces/paises.interface';
+import { delay, switchMap, tap } from "rxjs/operators";
+import { PaisFull, PaisSmall } from '../../interfaces/paises.interface';
 import { PaisesService } from '../../services/paises.service';
 
 @Component({
@@ -21,6 +21,8 @@ export class SelectorPageComponent implements OnInit {
 
   public regiones : string[] = [];
   public paisesRegion : PaisSmall[] = [];
+  public fronteraContry : string[] = [];
+  public cargando : boolean = false;
 
   constructor(private _fBuilder : FormBuilder, private paisService : PaisesService) { }
 
@@ -39,11 +41,28 @@ export class SelectorPageComponent implements OnInit {
     // otra manera de hacer el codigo de arriba
     this.miFormulario.get('region')?.valueChanges
     .pipe(
-      tap((_)=> this.miFormulario.get('pais')?.reset('')),
+      tap((_)=> {
+        this.cargando = true;
+        this.miFormulario.get('pais')?.reset('')
+      }),
+      delay(1000),
       switchMap( region => this.paisService.getCountryRegion(region))
       ).subscribe(paises => {
         this.paisesRegion = paises;
+        this.cargando = false;
     })
+
+    this.miFormulario.get('pais')?.valueChanges.pipe(
+      tap((_) => {
+        this.cargando = true;
+        this.miFormulario.get('frontera')?.reset('')
+      }),
+      delay(1000),
+      switchMap( codigo => this.paisService.getContryCode(codigo))
+    ).subscribe(paises => {
+        this.fronteraContry = paises?.borders || [];
+        this.cargando = false;
+    });
   }
 
   sevaData():void{
