@@ -1,0 +1,3 @@
+<ul class="list-group cursorMenu">
+    <li *ngFor="let item of menuItem" class="list-group-item" [routerLink]="[item.ruta]" routerLinkActive="active">{{item.nombre}}</li>
+</ul>
