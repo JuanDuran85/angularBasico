@@ -20,12 +20,12 @@
             </select>
         </div>
     </div>
-    <div class="row mt-3" *ngIf="fronteraContry.length > 0">
+    <div class="row mt-3" *ngIf="fronteras.length > 0">
         <div class="col">
             <label for="" class="form-label">Fronteras</label>
             <select class="form-control" formControlName="frontera">
                 <option value=""> -- Seleccione la frontera --</option>
-                <option *ngFor="let frontera of fronteraContry" [value]="frontera"> {{frontera}} </option>
+                <option *ngFor="let fronContry of fronteras" [value]="fronContry.alpha3Code"> {{fronContry.name}} </option>
             </select>
         </div>
     </div>

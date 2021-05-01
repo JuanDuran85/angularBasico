@@ -23,6 +23,7 @@ export class SelectorPageComponent implements OnInit {
   public paisesRegion : PaisSmall[] = [];
   public fronteraContry : string[] = [];
   public cargando : boolean = false;
+  public fronteras : PaisSmall[] = [];
 
   constructor(private _fBuilder : FormBuilder, private paisService : PaisesService) { }
 
@@ -58,9 +59,12 @@ export class SelectorPageComponent implements OnInit {
         this.miFormulario.get('frontera')?.reset('')
       }),
       delay(1000),
-      switchMap( codigo => this.paisService.getContryCode(codigo))
+      switchMap( codigo => this.paisService.getContryCode(codigo)),
+      switchMap(pais => this.paisService.getContrysCodes(pais?.borders!))
     ).subscribe(paises => {
-        this.fronteraContry = paises?.borders || [];
+        // this.fronteraContry = paises?.borders || [];
+        
+        this.fronteras = paises;
         this.cargando = false;
     });
   }
