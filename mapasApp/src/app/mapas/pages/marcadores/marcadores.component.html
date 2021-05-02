@@ -1,6 +1,6 @@
 <ul class="list-group">
     <li class="list-group-item list-group-item-info" (click)="nuevoMarcador()">+ Agregar</li>
-    <li class="list-group-item" (click)="irMarcador()">Mark-1</li>
+    <li *ngFor="let item of arregloMarcadores; let i = index" [ngStyle]="{'background-color': item.color}"  class="list-group-item" (click)="irMarcador(item.marker)">Mark-{{i}}</li>
 </ul>
 
 <div #mapa class="mapaRange"></div>

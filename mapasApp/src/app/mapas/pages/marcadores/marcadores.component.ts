@@ -1,6 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl'
 
+interface MarkerColors {
+  color: string,
+  marker?: mapboxgl.Marker;
+  centro?: [number, number];
+}
+
 @Component({
   selector: 'app-marcadores',
   templateUrl: './marcadores.component.html',
@@ -10,7 +16,9 @@ export class MarcadoresComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public mapaFinal! : mapboxgl.Map;
   public zoomLavel : number = 15;
-  public centro : [number,number] = [-70.61200807074893,-33.43786874276012]
+  public centro : [number,number] = [-70.61200807074893,-33.43786874276012];
+
+  public arregloMarcadores : MarkerColors[] = [];
 
   @ViewChild('mapa') divMapa! : ElementRef;
 
@@ -23,6 +31,8 @@ export class MarcadoresComponent implements OnInit, AfterViewInit, OnDestroy {
       center: this.centro,
       zoom: this.zoomLavel
     });
+
+    this.readMarcadorLocal();
 
     /* Agregando marcadores personalizados */
     /* const markerHtml : HTMLElement = document.createElement('div');
@@ -39,8 +49,12 @@ export class MarcadoresComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  irMarcador():void{
-    console.log("ir a marcador 1");
+  irMarcador(markerFull? : mapboxgl.Marker):void{
+    this.mapaFinal.flyTo({
+      center: markerFull!.getLngLat(),
+      speed: 0.6,
+      zoom: 15
+    })
   }
 
   nuevoMarcador(){
@@ -51,6 +65,49 @@ export class MarcadoresComponent implements OnInit, AfterViewInit, OnDestroy {
       draggable: true,
       color
     }).setLngLat(this.centro).addTo(this.mapaFinal);
+
+    this.arregloMarcadores.push({
+      color,
+      marker: nuevoMarcador
+    });
+
+    this.saveMarcadoresLocal();
+  }
+
+  saveMarcadoresLocal() : void {
+
+    const nuevoArreglo : MarkerColors[] = [];
+
+    this.arregloMarcadores.forEach(result => {
+      const color = result.color;
+      const {lng,lat} = result.marker!.getLngLat();
+
+      nuevoArreglo.push({
+        color,
+        centro: [lng,lat]
+      })
+    })
+
+    localStorage.setItem('marcadores',JSON.stringify(nuevoArreglo));
+  }
+
+  readMarcadorLocal() : void {
+
+    if (!localStorage.getItem('marcadores')) {
+      return;
+    }
+
+    const lngLatArreglo : MarkerColors[] = JSON.parse(localStorage.getItem('marcadores')!);
+
+    lngLatArreglo.forEach(result => {
+      const newMarker = new mapboxgl.Marker({
+        color: result.color,
+        draggable: true
+      })
+      .setLngLat(result.centro!)
+      .addTo(this.mapaFinal)
+    })
+
   }
 
 }
