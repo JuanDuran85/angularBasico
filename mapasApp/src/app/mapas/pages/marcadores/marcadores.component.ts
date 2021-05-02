@@ -42,12 +42,9 @@ export class MarcadoresComponent implements OnInit, AfterViewInit, OnDestroy {
     /* Marcadores estaticos */
     //const marker = new mapboxgl.Marker().setLngLat(this.centro).addTo(this.mapaFinal);
   }
-  ngOnDestroy(): void {
-    
-  }
+  ngOnDestroy(): void {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   irMarcador(markerFull? : mapboxgl.Marker):void{
     this.mapaFinal.flyTo({
@@ -106,8 +103,13 @@ export class MarcadoresComponent implements OnInit, AfterViewInit, OnDestroy {
       })
       .setLngLat(result.centro!)
       .addTo(this.mapaFinal)
-    })
+
+      this.arregloMarcadores.push({
+        marker: newMarker,
+        color: result.color,
+      })
+    });
+
 
   }
-
 }
