@@ -68,11 +68,14 @@ export class MarcadoresComponent implements OnInit, AfterViewInit, OnDestroy {
       marker: nuevoMarcador
     });
 
+    nuevoMarcador.on('dragend',()=>{
+      this.saveMarcadoresLocal();
+    });
+
     this.saveMarcadoresLocal();
   }
 
   saveMarcadoresLocal() : void {
-
     const nuevoArreglo : MarkerColors[] = [];
 
     this.arregloMarcadores.forEach(result => {
@@ -89,7 +92,6 @@ export class MarcadoresComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   readMarcadorLocal() : void {
-
     if (!localStorage.getItem('marcadores')) {
       return;
     }
@@ -107,9 +109,17 @@ export class MarcadoresComponent implements OnInit, AfterViewInit, OnDestroy {
       this.arregloMarcadores.push({
         marker: newMarker,
         color: result.color,
-      })
+      });
+
+      newMarker.on('dragend',()=>{
+        this.saveMarcadoresLocal();
+      });
     });
+  }
 
-
+  deleteMarker(i : number):void {
+    this.arregloMarcadores[i].marker?.remove();
+    this.arregloMarcadores.splice(i,1);
+    this.saveMarcadoresLocal();
   }
 }
