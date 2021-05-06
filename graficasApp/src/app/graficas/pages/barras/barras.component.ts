@@ -25,9 +25,9 @@ export class BarrasComponent implements OnInit {
   public barChartLegend = true;
 
   public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-    { data: [18, 49, 10, 89, 96, 57, 4], label: 'Series C' }
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A', backgroundColor: '#8E47FF'  },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B', backgroundColor: '#3E6ADE'  },
+    { data: [18, 49, 10, 89, 96, 57, 4], label: 'Series C' , backgroundColor: '#B4FA8B' }
   ]
 
   constructor() { }
