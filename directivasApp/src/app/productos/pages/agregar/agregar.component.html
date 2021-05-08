@@ -8,11 +8,12 @@
         <input type="text" class="form-control" id="nombre" formControlName="nombre">
       </div>
       <div class="col-auto mt-1">
-          <span *ngIf="errorExist('nombre')" errorMsg color="red" msg="Debe ingresar un nombre en este campo"></span>
+          <span *ngIf="errorExist('nombre')" errorMsg [color]="colorDirective" [msg]="changeMsg"></span>
       </div>
     </div>
     
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" class="btn btn-primary" (click)="changeMSG()">Guardar</button>
+    <button type="submit" class="btn btn-primary mx-2" (click)="changeColor()">Cambiar Color</button>
 </form>
 
 <h3 class="mt-5">Formulario</h3>
