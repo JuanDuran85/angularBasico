@@ -15,8 +15,16 @@ export class ErrorMsgDirective implements OnInit, OnChanges {
   }
 
   @Input() set msg(value : string) {
-    this.htmlElemento.nativeElement.innerHTML = value;
     this._msg = value;
+    this.setMsg();
+  };
+
+  @Input() set valido(value : boolean) {
+    if (value === true) {
+      this.htmlElemento.nativeElement.classList.remove('ocultar');
+    } else {
+      this.htmlElemento.nativeElement.classList.add('ocultar');
+    }
   };
 
   public htmlElemento : ElementRef<HTMLElement>

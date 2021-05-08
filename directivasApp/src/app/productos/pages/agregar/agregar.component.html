@@ -8,7 +8,7 @@
         <input type="text" class="form-control" id="nombre" formControlName="nombre">
       </div>
       <div class="col-auto mt-1">
-          <span *ngIf="errorExist('nombre')" errorMsg [color]="colorDirective" [msg]="changeMsg"></span>
+          <span [valido]="errorExist('nombre')" errorMsg [color]="colorDirective" [msg]="changeMsg"></span>
       </div>
     </div>
     
@@ -19,3 +19,11 @@
 <h3 class="mt-5">Formulario</h3>
 <pre>Valid: {{formProductos.valid}}</pre>
 <pre>Valid: {{formProductos.value | json}}</pre>
+
+<div class="row mt-5" *customIf="formProductos.valid">
+  <div class="col">
+    <div class="alert alert-primary" role="alert">
+      <strong>Todo bien...</strong>
+    </div>
+  </div>
+</div>
