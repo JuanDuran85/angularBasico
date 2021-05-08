@@ -1,18 +1,20 @@
 <h1 class="mt-5">Agregar Producto</h1>
 <hr>
 
-<form>
+<form [formGroup]="formProductos">
     <div class="row mb-3">
       <label for="nombre" class="col-auto col-form-label">Nombre</label>
       <div class="col-auto">
-        <input type="text" class="form-control" id="nombre">
+        <input type="text" class="form-control" id="nombre" formControlName="nombre">
       </div>
       <div class="col-auto mt-1">
-          <span class="form-text">Este campo es requerido</span>
+          <span *ngIf="errorExist('nombre')" errorMsg color="red" msg="Debe ingresar un nombre en este campo"></span>
       </div>
     </div>
     
     <button type="submit" class="btn btn-primary">Guardar</button>
-  </form>
+</form>
 
-  <h3 class="mt-5">Formulario</h3>
+<h3 class="mt-5">Formulario</h3>
+<pre>Valid: {{formProductos.valid}}</pre>
+<pre>Valid: {{formProductos.value | json}}</pre>
