@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<h1 class="login100-form-title p-b-49">DashBoard</h1>
+<hr>
+
+<p class="label-input100">Esta página sólo funciona si estás autenticado</p>
+
+<h3>Información del usuario:</h3>
+<pre>{{usuario | json}}</pre>
+
+<div class="container-login100-form-btn">
+    <div class="wrap-login100-form-btn">
+        <div class="login100-form-bgbtn"></div>
+        <button class="login100-form-btn" (click)="logoutUser()">LogOut</button>
+    </div>
+</div>
