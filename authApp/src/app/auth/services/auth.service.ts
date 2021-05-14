@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthResponse, UserData } from '../interfaces/auth.interface';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -29,6 +29,7 @@ export class AuthService {
     return this._http.post<AuthResponse>(url, body).pipe(
       tap(resp => {
         if (resp.ok) {
+          localStorage.setItem('token',resp.token!);
           this._user = {
             name: resp.name!,
             uid: resp.uid!
@@ -36,7 +37,27 @@ export class AuthService {
         }
       }),
       map(resp => resp.ok),
+      catchError((error) => of(error.error))
+    );
+  }
+
+  validToken() : Observable<boolean> {
+    const url : string = `${this.baseUrl}/auth/renew`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token') || '');
+    return this._http.get<AuthResponse>(url, {headers}).pipe(
+      map(resp => {
+        localStorage.setItem('token',resp.token!);
+        this._user = {
+          name: resp.name!,
+          uid: resp.uid!
+        }
+        return resp.ok
+      }),
       catchError(() => of(false))
     );
+  }
+
+  logOutUser(){
+    localStorage.removeItem('token');
   }
 }

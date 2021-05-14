@@ -2,6 +2,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -24,10 +25,33 @@ export class LoginComponent implements OnInit {
   login() : void {
     const { email, password } = this.loginForm.value;
     this._authService.loginUser(email,password).subscribe(resp => {
-      if (resp) {
-        this._router.navigateByUrl('/dashboard');
+      if (resp === true) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'Ingreso éxitoso'
+        }).then(()=>{
+          this._router.navigateByUrl('/dashboard');
+        });
+
       } else {
-        console.log("error");
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${resp.msg}`,
+          footer: 'Intenta nuevamente...'
+        })
       }
     });
   }
