@@ -1,0 +1,72 @@
+<h1>Pipes en Angular</h1>
+<hr>
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th>Variable</th>
+          <th>Pipe</th>
+          <th>Salida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>uppercase</td>
+          <td>{{nombre | uppercase}}</td>
+        </tr>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>lowercasa</td>
+          <td>{{nombre | lowercase}}</td>
+        </tr>
+        <tr>
+          <td>{{nombre}}</td>
+          <td>slice:0:5</td>
+          <td>{{nombre | slice:0:5}}</td>
+        </tr>
+        <tr>
+          <td>{{arreglo}}</td>
+          <td>slice:1:5</td>
+          <td>{{arreglo | slice:1:5}}</td>
+        </tr>
+        <tr>
+          <td>{{PI}}</td>
+          <td>number:'3.0-0'</td>
+          <td>{{PI | number:'3.0-0'}}</td>
+        </tr>
+        <tr>
+          <td>{{PI}}</td>
+          <td>number:'.0-2'</td>
+          <td>{{PI | number:'.0-2'}}</td>
+        </tr>
+        <tr>
+          <td>{{porcentaje}}</td>
+          <td>percent</td>
+          <td>{{porcentaje | percent}}</td>
+        </tr>
+        <tr>
+          <td>{{porcentaje}}</td>
+          <td>percent:'2.2-2'</td>
+          <td>{{porcentaje | percent:'2.2-2'}}</td>
+        </tr>
+        <tr>
+          <td>{{salario}}</td>
+          <td>currency</td>
+          <td>{{salario | currency}}</td>
+        </tr>
+        <tr>
+          <td>{{salario}}</td>
+          <td>currency: 'VEF'</td>
+          <td>{{salario | currency: 'VEF '}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Pipe Slice:4:8</h4>
+    <ul>
+      <li *ngFor="let item of arreglo | slice:4:8">{{item}}</li>
+    </ul>
+  </div>
+</div>
+
