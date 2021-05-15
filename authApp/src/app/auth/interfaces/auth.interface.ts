@@ -4,9 +4,11 @@ export interface AuthResponse {
     name?: string;
     uid? : string;
     token?: string;
+    email?: string;
 }
 
 export interface UserData {
     uid: string;
     name: string;
+    email?: string;
 }
