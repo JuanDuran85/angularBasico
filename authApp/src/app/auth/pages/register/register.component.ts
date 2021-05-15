@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -17,12 +19,56 @@ export class RegisterComponent implements OnInit {
     password: ['1234567',[Validators.required, Validators.minLength(6)]],
   })
 
-  constructor(private _fb : FormBuilder, private _router : Router) { }
+  constructor(private _fb : FormBuilder, private _router : Router, private _authService : AuthService) { }
 
   ngOnInit(): void {}
 
   registerUser():void{
-    console.log(this.formRegister.value);
-    this._router.navigateByUrl('/dashboard');
+    const {email, name, password } = this.formRegister.value;
+    this._authService.registerUser(name , password, email).subscribe(resp => {
+      if (resp === true) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'Registro éxitoso'
+        }).then(()=>{
+          this._router.navigateByUrl('/dashboard');
+        });
+
+      } else {
+        if (resp.errors === undefined) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${resp.msg}`,
+            footer: 'Intenta nuevamente...'
+          })
+        } else {
+          const errorMsg : string[] = [];
+          resp.errors.errors.forEach((element: any) => {
+            errorMsg.push(element.msg);
+          });
+          
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${errorMsg.toString()}`,
+            footer: 'Intenta nuevamente...'
+          })
+        }
+      }
+    });
+    //this._router.navigateByUrl('/dashboard');
   }
 }
