@@ -1,10 +1,10 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SpotyAppArtist } from '../interfaces/search_artist.interface';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { SpotyApp } from '../interfaces/new_release.interface';
+import { SpotyAppArtist } from '../interfaces/search_artist.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class SpotifyService {
   getQuery(query : string) {
     const url : string = `${this.urlBase}/${query}`;
     const headers = new HttpHeaders({
-      'Authorization' : 'Bearer BQB8JEGg0WuDzpHTHOBE-mNpiEFJPiJam2_w9DkQidSvkJjO0NnlXZ_HTVw6zN9PWTwVVYpHbSpzp9DCo7Q' 
+      'Authorization' : 'Bearer BQC77n8_67rFSMu020dAgAT6tchIwBNMt7dH5aNOdUlpZ2vWsU8hXU-mK9YTgBJhkk6kxob2r8a1GVz-RiQ' 
     });
     return this._http.get(url,{headers});
   }
@@ -30,13 +30,26 @@ export class SpotifyService {
     )
   }
 
-  getArtista(termino:string) : Observable<SpotyAppArtist[]> {
+  getArtistas(termino:string) : Observable<SpotyAppArtist[]> {
     return this.getQuery(`search?q=${termino}&type=artist`).pipe(
-      map(resp => resp['artists'].items)
+      map(resp => resp['artists'].items),
+      catchError(err => of(err.error.error.status))
     );
   }
 
-/*   generateNewToken(){
-    return this._http.post('https://accounts.spotify.com/api/token')
-  } */
+  getArtistDetail(id:string) : Observable<Object>{
+    return this.getQuery(`artists/${id}`)
+  }
+
+  generateNewToken(){
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/x-www-form-urlencoded' 
+    }); 
+    const body : Object = {
+      grant_type : 'client_credentials',
+      client_id: '1089b307322b4c1492cf12e309081829',
+      client_secret: `${environment.client_secret}`
+    }
+    return this._http.post('https://accounts.spotify.com/api/token',{headers},body)
+  }
 }

@@ -1,3 +1,4 @@
+import { ArtistaComponent } from './components/artista/artista.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path: 'artist/:id',
+    component: ArtistaComponent
   },
   {
     path: '**',
