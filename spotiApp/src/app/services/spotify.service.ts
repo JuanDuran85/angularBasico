@@ -5,6 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { SpotyApp } from '../interfaces/new_release.interface';
 import { SpotyAppArtist } from '../interfaces/search_artist.interface';
+import { AlbumsArtist } from '../interfaces/album-artist.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class SpotifyService {
   getQuery(query : string) {
     const url : string = `${this.urlBase}/${query}`;
     const headers = new HttpHeaders({
-      'Authorization' : 'Bearer BQC77n8_67rFSMu020dAgAT6tchIwBNMt7dH5aNOdUlpZ2vWsU8hXU-mK9YTgBJhkk6kxob2r8a1GVz-RiQ' 
+      'Authorization' : 'Bearer BQB-wmiVOxdCRM2ovj3EdEqEx3hSctEwP2kem_8iAUNw419rwOfkTi_wjZWNhlqnKtI6A4p-Mv6cfQz4bn0' 
     });
     return this._http.get(url,{headers});
   }
@@ -39,6 +40,12 @@ export class SpotifyService {
 
   getArtistDetail(id:string) : Observable<Object>{
     return this.getQuery(`artists/${id}`)
+  }
+
+  getTopTracks(id:string) : Observable<AlbumsArtist[]>{
+    return this.getQuery(`artists/${id}/top-tracks?market=ES`).pipe(
+      map(result => result['tracks'])
+    )
   }
 
   generateNewToken(){

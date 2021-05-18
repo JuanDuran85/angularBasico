@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
 
   public data : SpotyApp[] = [];
   public loading : boolean = false;
+  public errorService : boolean = false;
+  public msg : string = null;
 
   constructor(private _spotifyServices : SpotifyService) { 
     this.loading = true;
@@ -25,6 +27,10 @@ export class HomeComponent implements OnInit {
     ).subscribe((datos: any) =>{
       this.data = datos;
       this.loading = false;
+    },(err)=>{
+      this.loading = false;
+      this.errorService = true;
+      this.msg = err.error.error.message;
     });
   }
 }
