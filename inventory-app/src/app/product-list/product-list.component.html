@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="container text-center m-5">
+  <div class="container text-center m-3">
     <h3>Inventory System</h3>
   </div>
 
@@ -13,11 +13,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>dfd</td>
+      <tr *ngFor="let product of products">
+        <th scope="row">{{product.productId}}</th>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.stock}}</td>
       </tr>
     </tbody>
   </table>
