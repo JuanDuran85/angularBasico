@@ -1,55 +1,68 @@
-# angularBasico
+# Basic Angular
 
-Ejemplos de Angular básico. 
+Basic Angular examples. 
 
-## Generar nuevo proyecto
+## Generate new project
 
 ```
-ng new nombre_proyecto
-```
-
-## Generar componentes:
-1. Componente General
-```
-ng g c nombre_componente
-```
-2. Componente sin test
-```
-ng g c nombre_componente --skipTests
+ng new project_name
 ```
 
-## Generar nuevo modulo
-1. Modulo General
+## General Component:
+
+1. General Component
 ```
-ng g m nombre_modulo
+ng g c component_name
+```
+2. Component without tests
+```
+ng g c component_name --skipTests
 ```
 
-2. Modulo sin crear carpeta - (--flat) Para evitar que se cree la carpeta
+## Generate new module
+1. General Module
 ```
-ng g m nombre_modulo --flat
-```
-
-3. Modulo para rutas hijas
-```
-ng g m nombre_modulo --routing
+ng g m module_name
 ```
 
-## Generar Servicio
+2. Module without creating a folder - (--flat) To prevent the creation of a folder
 ```
-ng g s nombre_servicio
-```
-
-## Generar Guards
-```
-ng g guard nombre_del_guarda
+ng g m module_name --flat
 ```
 
-## Generar Pipes
+3. Module for child routes
 ```
-ng g pipe nombre_pipes
+ng g m module_name --routing
 ```
 
-## Llevar a produción
+## Generate Service
+```
+ng g s service_name
+```
+
+## Generate Guards
+```
+ng g guard guard_name
+```
+
+## Generate Pipes
+```
+ng g pipe pipe_name
+```
+
+## Build for production
 ```
  ng build --prod
+```
+
+## Run the project
+
+1. To run the application locally during development:
+```
+ng serve
+```
+
+2. You can also specify a custom port:
+```
+ng serve --port 4201
 ```
