@@ -31,4 +31,11 @@ export class ProductListComponent {
     console.debug(idProduct);
     this.router.navigate(['/edit-product', idProduct]);
   }
+
+  public deleteProduct(id: number) {
+    this.productService.deleteProduct(id).subscribe({
+      next: (data) => this.getAllProducts(),
+      error: (err) => console.error(err),
+    });
+  }
 }

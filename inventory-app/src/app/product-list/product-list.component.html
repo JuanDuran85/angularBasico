@@ -10,20 +10,78 @@
         <th scope="col">Description</th>
         <th scope="col">Price</th>
         <th scope="col">Stock</th>
-        <th scope="col">Actions</th>
+        <th scope="col" class="text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
-        <th scope="row">{{product.productId}}</th>
-        <td>{{product.description}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.stock}}</td>
-        <td class="text-center">
+        <th scope="row">{{ product.productId }}</th>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.stock }}</td>
+        <td class="d-flex justify-content-evenly text-center">
           <div>
-            <button type="button" (click)="editProduct(product.productId)" class="btn btn-warning btn-sm">Edit</button>
+            <button
+              type="button"
+              (click)="editProduct(product.productId)"
+              class="btn btn-warning btn-sm"
+            >
+              Edit
+            </button>
+          </div>
+          <div>
+            <button
+              type="button"
+              data-bs-toggle="modal"
+              attr.data-bs-target="#{{ product.productId }}"
+              class="btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
           </div>
         </td>
+        <div
+          class="modal fade"
+          id="{{ product.productId }}"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Are you sure yo want to delete this product?
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body text-center fs-4">
+                <p>{{ product.description }}</p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="deleteProduct(product.productId)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </tr>
     </tbody>
   </table>
