@@ -1,28 +1,23 @@
 <div class="container">
-    <h3>Adding Product</h3>
+  <h3 class="text-center m-5">Adding Product</h3>
 </div>
 <div class="container">
   <form>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-      />
-      <div id="emailHelp" class="form-text">
-        We'll never share your email with anyone else.
-      </div>
+      <label for="inputDescription" class="form-label">Description</label>
+      <input type="text" class="form-control" id="inputDescription" />
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" />
+      <label for="inputPrice" class="form-label">Price</label>
+      <input type="number" step="any" class="form-control" id="inputPrice" />
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <div class="mb-3">
+      <label class="form-label" for="inputStock">Stock</label>
+      <input type="number" class="form-control" id="inputStock" />
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="text-center m-2">
+      <button type="submit" class="btn btn-primary fw-bold me-2">Add</button>
+      <a href="/" type="submit" class="btn btn-secondary fw-bold ms-2">Back</a>
+    </div>
   </form>
 </div>
