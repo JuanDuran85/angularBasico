@@ -10,6 +10,7 @@
         <th scope="col">Description</th>
         <th scope="col">Price</th>
         <th scope="col">Stock</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +19,11 @@
         <td>{{product.description}}</td>
         <td>{{product.price}}</td>
         <td>{{product.stock}}</td>
+        <td class="text-center">
+          <div>
+            <button type="button" (click)="editProduct(product.productId)" class="btn btn-warning btn-sm">Edit</button>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
