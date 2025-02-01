@@ -28,10 +28,16 @@ export class EditProductComponent {
     });
   }
 
-  public onSubmit() {
+  public onSubmit(): void {
     this.editProduct();
   }
-  private editProduct() {
-    throw new Error('Method not implemented.');
+  private editProduct(): void {
+    this.productService.editProduct(this.id, this.product).subscribe({
+      next: (data) => this.productList(),
+      error: (err) => console.error(err),
+    });
+  }
+  private productList(): void {
+    this.router.navigate(['/products']);
   }
 }

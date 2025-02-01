@@ -9,7 +9,7 @@ import { Product } from './product';
 export class ProductService {
   private readonly urlBase = 'http://localhost:8080/products-app';
 
-  constructor(private readonly http: HttpClient) {}
+  public constructor(private readonly http: HttpClient) {}
 
   public getProductsList(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.urlBase}/products`);
@@ -21,5 +21,9 @@ export class ProductService {
 
   public getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.urlBase}/products/${id}`);
+  }
+
+  public editProduct(id: number, product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.urlBase}/products/${id}`, product);
   }
 }
